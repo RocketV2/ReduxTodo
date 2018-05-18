@@ -29,3 +29,14 @@ export const changeItem = (text) => {
 		type: TODO_CHANGE
 	}
 }
+
+// redux-thunk 异步处理
+// 如果dispatch传入的是object，直接进入reducer
+// 如果传入的是function，则在中间件中处理
+export const asyncGetData = (val) => {
+	return (dispatch,getState) => {
+		setTimeout(()=>{
+			dispatch(addItem(val));
+		},1000)
+	}
+}

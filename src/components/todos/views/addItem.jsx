@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import {connect} from 'react-redux'
 import Store from '../../../store/store'
-import {addItem as addItemAction} from '../actions'
+import {addItem as addItemAction, asyncGetData} from '../actions'
 
 /**
  * UI组件 负责展示，不进行业务逻辑、数据处理等  
@@ -43,6 +43,9 @@ class AddItem extends React.Component{
 			<form onClick={this.eventHandler} onKeyDown={this.eventHandler} >
 				<input type="text" ref={this.refDom} />
 				<button type='submit'>add</button>
+				<p>
+					使用redux-thunk异步处理,输入后1s再处理
+				</p>
 			</form>
 		);
 	}
@@ -82,7 +85,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addItem: (val) => {
-			dispatch(addItemAction(val))
+			// 使用redux-thunk异步处理
+			dispatch( asyncGetData(val) )
+			// dispatch(addItemAction(val))
 		},
 	}
 }
