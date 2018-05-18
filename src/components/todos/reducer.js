@@ -2,8 +2,7 @@
  * reducer 纯函数
  * 在此进行state的操作
  */
-
-import {TODO_ADD,TODO_CHANGE,TODO_DELETE} from './actionTypes'
+import {TODO_ADD,TODO_CHANGE,TODO_DELETE} from './actionTypes';
 
 export default (state=[],action) => {
 
@@ -13,9 +12,19 @@ export default (state=[],action) => {
 				id: action.id,
 				type: action.type,
 				text: action.text,
+				status: false,
+				completed: 'all'// all finished unfinished
 			}];
 		case TODO_CHANGE:// 改变item
-			return state;
+			return state.map((item,index)=>{
+				if(item.id === action.id){
+					return Object.assign({},item,{
+						status: !item.status
+					});
+				}else{
+					return item;
+				}
+			});
 		case TODO_DELETE:// 删除item
 			return state.filter((item,index)=>{
 				return action.id !== item.id;
@@ -23,5 +32,4 @@ export default (state=[],action) => {
 		default:
 			return state;
 	}
-
 }

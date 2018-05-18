@@ -4,23 +4,31 @@ import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 
 import Store from '../../../store/store'
-import {addItem as addItemAction} from '../actions'
+import {changeItem as changeItemAction} from '../actions'
 /**
  * UI组件
  */
 const ListItem = ({itemInfo,changeStatus}) => {
-
+	let fontDeco = '';
 	let liItem = itemInfo.map((item,index)=>{
+		if(item.status){
+			fontDeco = 'li-delete'
+		}else{
+			fontDeco = 'li-no-del'
+		}
+		
 		return (
 			<li 
 				key={item.id}
 				data-id={item.id}
-				onClick={changeStatus}
+				onClick={changeStatus.bind(null,item.id)}
+				className={fontDeco}
 			>
 				{item.text}
 			</li>
 		);
 	});
+
 	return (
 		<ul>
 			{liItem}
@@ -70,15 +78,45 @@ ListItem.propTypes = {
 }
 export default Container;
 */
+
+/**
+ * [过滤todolist 数据]
+ * @param  {[type]} itemInfo   [description]
+ * @param  {[type]} filterType [description]
+ * @return {[type]}            [description]
+ */
+const filterTodoList = (itemInfo,filterType) => {
+	let itemInfoFilter = itemInfo;
+	switch(filterType){
+		case 'all':
+			break;
+		case 'finished':
+			itemInfoFilter = itemInfo.filter((item,index)=>{
+				return item.status
+			});
+			break;
+		case 'unfinished':
+			itemInfoFilter = itemInfo.filter((item,index)=>{
+				return !item.status;
+			});
+			break;
+		default:
+			break;
+	}
+	return itemInfoFilter;
+}
+
 const mapStateToProps = (state) => {
+
 	return {
-		itemInfo: state.todos
+		itemInfo: filterTodoList(state.todos,state.filters),
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		changeStatus: (id) => {
+			dispatch(changeItemAction(id))
 		},
 	}
 }

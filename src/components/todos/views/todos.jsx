@@ -4,6 +4,8 @@ import React from 'react'
 import AddItem from './addItem'
 import ListItem from './listItem'
 
+import './style.css'
+
 export const Todos = () => {
 
 	return (

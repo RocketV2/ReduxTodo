@@ -1,0 +1,46 @@
+
+form input {
+	outline: none;
+	width: 200px;
+	height: 26px;
+	padding: 3px 8px;
+	box-sizing: border-box;
+}
+
+form button{
+	width: 50px;
+	height: 25px;
+	margin-left: 10px;
+	border-radius: 10px;
+	outline: none;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+li {
+	width: 200px;
+	height: 30px;
+	box-sizing: border-box;
+	padding-left: 10px;
+	line-height: 30px;
+	background-color: #e5f8e1;
+	margin-bottom: 15px;
+}
+.li-delete{
+	text-decoration:line-through;
+	background-color: #ddd;
+}
+.li-no-del{
+	text-decoration:none;
+	background-color: #e5f8e1;
+}
+
+.hide{
+	display: none;
+}
+.show{
+	display: block;
+}

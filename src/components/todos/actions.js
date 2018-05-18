@@ -2,7 +2,7 @@
  * 根据不同的action类型，返回不同的action对象
  */
 
-import {TODO_ADD,TODO_CHANGE,TODO_DELETE} from './actionTypes'
+import {TODO_ADD,TODO_CHANGE,TODO_DELETE} from './actionTypes';
 
 // 添加item
 let itemId = 0;
@@ -23,7 +23,7 @@ export const deleteItem = (id) => {
 }
 
 // 改变item状态
-export const changeItem = (text) => {
+export const changeItem = (id) => {
 	return {
 		id: id,
 		type: TODO_CHANGE

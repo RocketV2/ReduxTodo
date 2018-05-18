@@ -23,9 +23,11 @@ class AddItem extends React.Component{
 		// 点击按钮
 		if(e && e.target.type === 'submit' && e.type === 'click'){
 			e.preventDefault();
-			this.props.addItem(this.textInput.value);
-			this.textInput.value = '';// 置空
-			this.textInput.focus();
+			if(this.textInput.value !== ''){
+				this.props.addItem(this.textInput.value);
+				this.textInput.value = '';// 置空
+				this.textInput.focus();
+			}
 		}
 		// input回车
 		if(e && e.target.type === 'text' && e.type === 'keydown'){
