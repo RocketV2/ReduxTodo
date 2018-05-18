@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import {connect} from 'react-redux'
 import Store from '../../../store/store'
 import {addItem as addItemAction} from '../actions'
 
@@ -52,8 +53,10 @@ AddItem.propTypes = {
 
 /**
  * 容器组件 只负责业务逻辑、数据处理；不负责UI展示
+ *
+ * react-redux 的connect函数 就是生成个 容器组件
  */
-class Container extends React.Component{
+/*class Container extends React.Component{
 	constructor(){
 		super(...arguments)
 		this.addItem = this.addItem.bind(this)
@@ -70,4 +73,21 @@ class Container extends React.Component{
 		)
 	}
 }
-export default Container;
+export default Container;*/
+
+const mapStateToProps = (state) => {
+	return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addItem: (val) => {
+			dispatch(addItemAction(val))
+		},
+	}
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(AddItem);
+
+
+
