@@ -23,5 +23,5 @@
 
 #### 开发遇到的问题以及解决
 
-
+1. 使用redux-thunk中间件进行异步请求时，无法成功执行回调函数，具体见 [#问题 使用redux-thunk处理异步时，回调函数无法执行](https://github.com/RocketV2/ReduxTodo/issues/3)
 
