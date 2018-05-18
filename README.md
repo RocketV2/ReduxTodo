@@ -4,7 +4,7 @@
 #### 简介
 > 使用react/redux等完成 todo list 组件，梳理一下redux生态；其中在添加数据是使用redux-thunk中间件，并通过定时器模仿异步请求；
 
-![](./app/icons/react-show.gif) 
+![](./issueImages/todos.gif) 
 
 > 此组件虽然简单，但是能够很好理解 文件目录结构安排方式、父子组件之间通信、redux提供的便利等；基本掌握React开发生态；
 
